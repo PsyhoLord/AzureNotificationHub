@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "1011809484724",
+    "firebase_url": "https://azuresample-666f0.firebaseio.com",
+    "project_id": "azuresample-666f0",
+    "storage_bucket": "azuresample-666f0.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1011809484724:android:b466e092074416c2",
+        "android_client_info": {
+          "package_name": "com.azurenotificationhub.sample"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1011809484724-7gds159jhj0k57gq1pn4igd4devbinip.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA6oAoRVyjvKzSGwTNjwe_cFSB9wyXvHA4"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
