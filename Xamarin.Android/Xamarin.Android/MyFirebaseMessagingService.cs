@@ -1,8 +1,11 @@
 ﻿using System.Linq;
 using Android.App;
 using Android.Content;
+using Android.OS;
+using Android.Support.V4.App;
 using Android.Util;
 using Firebase.Messaging;
+using Build = Android.OS.Build;
 
 namespace Xamarin.Android
 {
@@ -34,15 +37,21 @@ namespace Xamarin.Android
             intent.AddFlags(ActivityFlags.ClearTop);
             var pendingIntent = PendingIntent.GetActivity(this, 0, intent, PendingIntentFlags.OneShot);
 
-            var notificationBuilder = new Notification.Builder(this)
+            var notificationBuilder = new NotificationCompat.Builder(this)
                 .SetContentTitle("FCM Message")
                 .SetSmallIcon(Resource.Drawable.ic_launcher)
                 .SetContentText(messageBody)
                 .SetAutoCancel(true)
+                .SetShowWhen(false)
+                
                 .SetContentIntent(pendingIntent);
 
-            var notificationManager = NotificationManager.FromContext(this);
+            if (Build.VERSION.SdkInt >= BuildVersionCodes.O)
+            {
+                notificationBuilder.SetChannelId(MainActivity.CHANNEL_ID);
+            }
 
+            var notificationManager = NotificationManager.FromContext(this);
             notificationManager.Notify(0, notificationBuilder.Build());
         }
     }
