@@ -43,7 +43,6 @@ namespace Xamarin.Android
                 .SetContentText(messageBody)
                 .SetAutoCancel(true)
                 .SetShowWhen(false)
-                
                 .SetContentIntent(pendingIntent);
 
             if (Build.VERSION.SdkInt >= BuildVersionCodes.O)
