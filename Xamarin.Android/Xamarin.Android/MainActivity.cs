@@ -30,6 +30,7 @@ namespace Xamarin.Android
             }
 
             IsPlayServicesAvailable();
+            CreateNotificationChannel();
 
             // Set our view from the "main" layout resource
             SetContentView(Resource.Layout.activity_main);
@@ -52,6 +53,27 @@ namespace Xamarin.Android
 
             Log.Debug(TAG, "Google Play Services is available.");
             return true;
+        }
+
+        void CreateNotificationChannel()
+        {
+            if (Build.VERSION.SdkInt < BuildVersionCodes.O)
+            {
+                // Notification channels are new in API 26 (and not a part of the
+                // support library). There is no need to create a notification
+                // channel on older versions of Android.
+                return;
+            }
+
+            var channelName = CHANNEL_ID;
+            var channelDescription = string.Empty;
+            var channel = new NotificationChannel(CHANNEL_ID, channelName, NotificationImportance.Default)
+            {
+                Description = channelDescription
+            };
+
+            var notificationManager = (NotificationManager)GetSystemService(NotificationService);
+            notificationManager.CreateNotificationChannel(channel);
         }
     }
 }
