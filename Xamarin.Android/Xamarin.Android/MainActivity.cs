@@ -55,7 +55,7 @@ namespace Xamarin.Android
             return true;
         }
 
-        void CreateNotificationChannel()
+        private void CreateNotificationChannel()
         {
             if (Build.VERSION.SdkInt < BuildVersionCodes.O)
             {
