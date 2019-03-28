@@ -2,7 +2,9 @@
 using Android.Gms.Common;
 using Android.OS;
 using Android.Support.V7.App;
+using Android.Util;
 using Android.Widget;
+using Firebase.Iid;
 
 namespace Fcm.Xamarin.Android
 {
@@ -24,9 +26,20 @@ namespace Fcm.Xamarin.Android
 
             msgText = FindViewById<TextView>(Resource.Id.msgText);
 
+            if (Intent.Extras != null)
+            {
+                foreach (var key in Intent.Extras.KeySet())
+                {
+                    var value = Intent.Extras.GetString(key);
+                    Log.Debug(TAG, "Key: {0} Value: {1}", key, value);
+                }
+            }
+
             IsPlayServicesAvailable();
 
             CreateNotificationChannel();
+
+            Log.Debug(TAG, "InstanceID token: " + FirebaseInstanceId.Instance.Token);
         }
 
         public bool IsPlayServicesAvailable()
